@@ -1,3 +1,5 @@
+// Refactor the code using jQuery
+
 let numberOfKeys= document.querySelectorAll(".key").length;
 
     for (let i=0; i<numberOfKeys; i++) {
@@ -11,7 +13,6 @@ let numberOfKeys= document.querySelectorAll(".key").length;
 
         })
     }
-
     
     document.addEventListener("keydown", function(event) {
 
@@ -111,7 +112,6 @@ let numberOfKeys= document.querySelectorAll(".key").length;
         }
 
     }
-
 
     const buttonAnimation= function (currentKey) {
 
