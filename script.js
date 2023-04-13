@@ -1,26 +1,18 @@
-let numberOfKeys= document.querySelectorAll(".key").length;
 
-    for (let i=0; i<numberOfKeys; i++) {
-        document.querySelectorAll(".key")[i].addEventListener("click", function(){
+$(document).ready(function() {
+     
+    let numberOfKeys= $(".key").length;
 
-           let keyInnerHTML= this.getAttribute("data-key");
+        for (let i=0; i<numberOfKeys; i++) {
+            $(".key").eq(i).click(function() {
+                let keyInnerHTML= $(this).attr("data-key");
 
-            makeSound(keyInnerHTML);
-            buttonAnimation(keyInnerHTML);
-
-
-        })
-    }
-
+                makeSound(keyInnerHTML);     
+                buttonAnimation(keyInnerHTML);
+            })
+        }
     
-    document.addEventListener("keydown", function(event) {
-
-        makeSound(event.key);
-        buttonAnimation(event.key);
-    })
-
-
-    const makeSound= function(key) {
+    const makeSound= function (key) {
 
         switch(key) {
             case "a":
@@ -109,17 +101,64 @@ let numberOfKeys= document.querySelectorAll(".key").length;
             break;
 
         }
+    };
 
-    }
+    $(document).on("keydown", function(event) {
+        
+        makeSound(event.key);
+        buttonAnimation(event.key);
+      
+    })
 
 
     const buttonAnimation= function (currentKey) {
 
-        let activeButton = document.querySelector(`[data-key="${currentKey}"]`);
-
-        activeButton.classList.add("pressed");
-
-        setTimeout(function() {
-            activeButton.classList.remove("pressed");
-        }, 100);
+        $(`[data-key="${currentKey}"]`).addClass("pressed");
+        
+        setTimeout(function () {
+            $(`[data-key="${currentKey}"]`).removeClass("pressed");
+        },100)
     }
+
+
+});
+
+
+// let numberOfKeys= document.querySelectorAll(".key").length;
+
+//     for (let i=0; i<numberOfKeys; i++) {
+//         document.querySelectorAll(".key")[i].addEventListener("click", function(){
+
+//            let keyInnerHTML= this.getAttribute("data-key");
+
+//             makeSound(keyInnerHTML);
+//             buttonAnimation(keyInnerHTML);
+
+
+//         })
+//     }
+
+    
+//     document.addEventListener("keydown", function(event) {
+
+//         makeSound(event.key);
+//         buttonAnimation(event.key);
+//     })
+
+
+    
+    // }
+
+
+    // const buttonAnimation= function (currentKey) {
+
+    //     let activeButton = document.querySelector(`[data-key="${currentKey}"]`);
+
+    //     activeButton.classList.add("pressed");
+
+    //     setTimeout(function() {
+    //         activeButton.classList.remove("pressed");
+    //     }, 100);
+
+
+   
